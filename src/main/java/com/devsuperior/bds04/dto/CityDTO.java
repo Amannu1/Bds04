@@ -38,4 +38,6 @@ public class CityDTO implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
 }
