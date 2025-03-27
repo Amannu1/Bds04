@@ -14,9 +14,6 @@ public class UserDTO implements Serializable {
 
     private Long id;
 
-    @NotBlank(message = "Required field.")
-    private String name;
-
     @Email(message = "Insert a valid email.")
     private String email;
 
@@ -26,16 +23,14 @@ public class UserDTO implements Serializable {
 
     }
 
-    public UserDTO(Long id, String password, String email, String name) {
+    public UserDTO(Long id, String password, String email) {
         this.id = id;
         this.email = email;
-        this.name = name;
     }
 
     public UserDTO(User entity){
         id = entity.getId();
         email = entity.getEmail();
-        name = getName();
         entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
     }
 
@@ -45,14 +40,6 @@ public class UserDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String firstName) {
-        this.name = name;
     }
 
     public String getEmail() {
